@@ -21,10 +21,16 @@ var server = http.createServer((req,res)=>{
     // res.end();
 
     // open file and output content
-    fs.readFile('demofile.html',function(err,data){
-        res.writeHead(200,{'Content-Type':'text/html'});
-        res.write(data);
-        res.end();
+    // fs.readFile('demofile.html',function(err,data){
+    //     res.writeHead(200,{'Content-Type':'text/html'});
+    //     res.write(data);
+    //     res.end();
+    // });
+
+    // create file
+    fs.appendFile('new-file-demo.txt','Hello World',function(err){
+        if (err) throw err;
+        console.log('Saved!');
     });
 });
 
