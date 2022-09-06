@@ -37,7 +37,13 @@ var server = http.createServer((req,res)=>{
     // });
 
     // open or create file if it doesn't exist
-    fs.open('new-file-demo.txt','w',(err)=>{
+    // fs.open('new-file-demo.txt','w',(err)=>{
+    //     if (err) throw err;
+    //     console.log('File opened!');
+    // });
+
+    // update or create file if it doesn't exist
+    fs.writeFile('new-file-demo.txt','Welcome Home Comrade',(err)=>{
         if (err) throw err;
         console.log('File updated!');
     });
