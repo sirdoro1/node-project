@@ -43,11 +43,17 @@ var server = http.createServer((req,res)=>{
     // });
 
     // update or create file if it doesn't exist
-    fs.writeFile('new-file-demo.txt','Welcome Home Comrade',(err)=>{
+    // fs.writeFile('new-file-demo.txt','Welcome Home Comrade',(err)=>{
+    //     if (err) throw err;
+    //     console.log('File updated!');
+    // });
+
+    // deleting file
+    fs.unlink('new-file-demo.txt',(err)=>{
         if (err) throw err;
-        console.log('File updated!');
+        console.log('File deleted!');
     });
-    res.end();
+    res.end('File Deleted!');
 });
 
 server.listen('5000');
