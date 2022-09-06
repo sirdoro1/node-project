@@ -5,14 +5,17 @@ var fs = require('fs');
 
 var server = http.createServer((req,res)=>{
     // res.writeHead(200,{'Content-Type':'text/plain'});
+
     // // Hello world
     // res.write('Hello World');
     // res.write("\r");
+
     // // Importing custom module
     // res.write("The date and time are currently: " + dateTime());
     // res.write("\r");
     // // getting the url
     // res.write('url: '+req.url);
+
     // // getting url parameters
     // var q = url.parse(req.url, true).query;
     // var txt = q.year + " " + q.month;
@@ -28,10 +31,17 @@ var server = http.createServer((req,res)=>{
     // });
 
     // create file
-    fs.appendFile('new-file-demo.txt','Hello World',function(err){
+    // fs.appendFile('new-file-demo.txt','Hello World',(err)=>{
+    //     if (err) throw err;
+    //     console.log('Saved!');
+    // });
+
+    // open or create file if it doesn't exist
+    fs.open('new-file-demo.txt','w',(err)=>{
         if (err) throw err;
-        console.log('Saved!');
+        console.log('File updated!');
     });
+    res.end();
 });
 
 server.listen('5000');
