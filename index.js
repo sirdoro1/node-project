@@ -41,6 +41,8 @@ var server = http.createServer((req,res)=>{
     //     if (err) throw err;
     //     console.log('File opened!');
     // });
+    // res.write('File opened!');
+    // res.write("\r");
 
     // update or create file if it doesn't exist
     // fs.writeFile('new-file-demo.txt','Welcome Home Comrade',(err)=>{
@@ -49,11 +51,31 @@ var server = http.createServer((req,res)=>{
     // });
 
     // deleting file
-    fs.unlink('new-file-demo.txt',(err)=>{
-        if (err) throw err;
-        console.log('File deleted!');
-    });
-    res.end('File Deleted!');
+    // fs.unlink('new-file-demo.txt',(err)=>{
+    //     if (err) throw err;
+    //     console.log('File deleted!');
+    // });
+
+    // renaming file
+    // fs.rename('new-file-demo.txt','new-file.txt',(err)=>{
+    //     if (err) throw err;
+    //     console.log('File renamed!');
+    // });
+    // res.end('File Renamed!');
+
+    // Paring and Handling URL
+    var q = url.parse(req.url,true);
+    console.log(`Host: ${q}`);
+    res.write("\r");
+    res.write(`Pathname: ${q.pathname}`);
+    res.write("\r");
+    res.write(`Search: ${q.search}`);
+    res.write("\r");
+    var qdata = q.query;
+    res.write(`Year: ${qdata.year}`);
+    res.write("\r");
+    res.write(`Month: ${qdata.month}`);
+    res.end();
 });
 
 server.listen('5000');
